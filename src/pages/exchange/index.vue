@@ -216,7 +216,7 @@
           columnValues[i] = allColumns[i].prop
         }
         require.ensure([], () => {
-          const { export_json_to_excel } = require('vendor/Export2Excel')
+          const { export_json_to_excel } = require('../../vendor/Export2Excel')
           const tHeader = columnNames
           const filterVal = columnValues
 
