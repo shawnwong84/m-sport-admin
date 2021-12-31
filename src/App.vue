@@ -14,11 +14,13 @@ export default {
 </script>
 
 <style lang="scss">
-html, body, #app {
-  height: 100%;
-  font-size :14px;
-  overflow: hidden;
-  margin:0;
-  font-family: PingFangSC-Semibold;
+html,
+body,
+#app {
+    height: 100%;
+    font-size: 14px;
+    overflow: hidden;
+    margin: 0;
+    font-family: PingFangSC-Semibold;
 }
 </style>
