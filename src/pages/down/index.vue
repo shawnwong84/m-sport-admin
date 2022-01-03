@@ -241,7 +241,7 @@
                     :label-width="formLabelWidth"
                     v-if="form.device !== 2 && isFile === 1 && isAdd"
                 >
-                    <!--          http://hszhibo.live/-->
+                    <!--          /-->
                     <el-upload
                         class="upload-demo"
                         :action="'/sequoiaBack/file/fileUploadApk'"

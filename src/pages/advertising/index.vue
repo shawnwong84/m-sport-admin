@@ -60,6 +60,7 @@
                     <span v-if="scope.row.adType === 3">pc首页广告</span>
                     <span v-if="scope.row.adType === 4">官方活动</span>
                     <span v-if="scope.row.adType === 5">红榜广告</span>
+                    <span v-if="scope.row.adType === 6"> PC首页TOP背景图</span>
                 </template>
             </el-table-column>
             <el-table-column prop="adDesc" label="广告描述"> </el-table-column>
@@ -108,7 +109,7 @@
                     <div>
                         <el-upload
                             class="upload-demo"
-                            :action="'http://hszhibo.live/sequoiaBack/file/fileUpload'"
+                            :action="'/sequoiaBack/file/fileUpload'"
                             :on-remove="handleRemove"
                             :on-change="handleChange"
                             :file-list="fileList"
@@ -174,6 +175,12 @@
                         :label="5"
                         @change="checkDesc(5)"
                         >红榜广告</el-radio
+                    >
+                      <el-radio
+                        v-model="form.adType"
+                        :label="6"
+                        @change="checkDesc(6)"
+                        >PC首页TOP背景图</el-radio
                     >
                 </el-form-item>
                 <el-form-item

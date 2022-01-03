@@ -255,7 +255,7 @@
                     <div>
                         <el-upload
                             class="upload-demo"
-                            :action="'http://hszhibo.live/sequoiaBack/file/fileUpload'"
+                            :action="'/sequoiaBack/file/fileUpload'"
                             :on-remove="handleRemove"
                             :on-change="handleChange"
                             :file-list="fileList"

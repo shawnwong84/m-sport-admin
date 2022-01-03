@@ -5,7 +5,6 @@
  * @date: Do not edit
  */
 const { VUE_APP_API_URL } = process.env;
-const path = require('path');
 module.exports = {
     //多页面打包配置
     pages: {
@@ -47,7 +46,7 @@ module.exports = {
         port: 8080,
         https: false,
         proxy: {
-            '/excuse': {
+            '/sequoiaBack': {
                 target: VUE_APP_API_URL,
                 changeOrigin: true,
                 logLevel: 'debug',
