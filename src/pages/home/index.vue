@@ -35,7 +35,16 @@
                         placeholder="请输入用户昵称"
                         size="small"
                         style="width: 150px"
-                        v-model="userName"
+                        v-model.trim="userName"
+                    >
+                    </el-input>
+                </div>
+                <div class="ml-10">
+                    <el-input
+                        placeholder="请输入主播房间号"
+                        size="small"
+                        style="width: 150px"
+                        v-model.trim="roomNum"
                     >
                     </el-input>
                 </div>
@@ -44,7 +53,7 @@
                         placeholder="请输入手机号查询"
                         size="small"
                         style="width: 150px"
-                        v-model="phone"
+                        v-model.trim="phone"
                     >
                     </el-input>
                 </div>
@@ -126,6 +135,20 @@
                 <template slot-scope="scope">
                     <span v-if="scope.row.hotAnchor === 0">否</span>
                     <span v-if="scope.row.hotAnchor === 1">是</span>
+                </template>
+            </el-table-column>
+            <el-table-column label="是否推荐" align="center">
+                <template slot-scope="scope">
+                    <span v-if="scope.row.recommend === 0">否</span>
+                    <span v-if="scope.row.recommend === 1">是</span>
+                </template>
+            </el-table-column>
+            <el-table-column label="房间初始热度" prop="roomHotInitial" align="center">
+            </el-table-column>
+             <el-table-column label="是否显示在首页" align="center">
+                <template slot-scope="scope">
+                    <span v-if="scope.row.showHome === 0">否</span>
+                    <span v-if="scope.row.showHome === 1">是</span>
                 </template>
             </el-table-column>
             <el-table-column label="热度" prop="hotNum" align="center">
@@ -267,6 +290,7 @@ export default {
         };
         return {
             userName: '',
+            roomNum: '',
             goldNumber: 0,
             tableData: [],
             fileList: [],
@@ -385,6 +409,7 @@ export default {
                 userName: this.userName,
                 type: this.type,
                 phone: this.phone,
+                roomNum: this.roomNum,
                 registerStartTime: timeStar,
                 registerEndTime: timeEnd,
             };
