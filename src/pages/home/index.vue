@@ -137,20 +137,6 @@
                     <span v-if="scope.row.hotAnchor === 1">是</span>
                 </template>
             </el-table-column>
-            <el-table-column label="是否推荐" align="center">
-                <template slot-scope="scope">
-                    <span v-if="scope.row.recommend === 0">否</span>
-                    <span v-if="scope.row.recommend === 1">是</span>
-                </template>
-            </el-table-column>
-            <el-table-column label="房间初始热度" prop="roomHotInitial" align="center">
-            </el-table-column>
-             <el-table-column label="是否显示在首页" align="center">
-                <template slot-scope="scope">
-                    <span v-if="scope.row.showHome === 0">否</span>
-                    <span v-if="scope.row.showHome === 1">是</span>
-                </template>
-            </el-table-column>
             <el-table-column label="热度" prop="hotNum" align="center">
             </el-table-column>
             <el-table-column label="注册时间" width="200" align="center">
@@ -222,7 +208,7 @@
                     label="主播昵称"
                     label-width="160px"
                     prop="nickName"
-                    v-if="userType === 1"
+                    v-if="userType == 1"
                 >
                     <el-input
                         v-model="nickName"
@@ -233,27 +219,46 @@
                     label="是否热门"
                     label-width="160px"
                     prop="hotAnchor"
-                    v-if="userType === 1"
+                    v-if="userType == 1"
                 >
                     <el-radio v-model="hotAnchor" :label="0">否</el-radio>
                     <el-radio v-model="hotAnchor" :label="1">是</el-radio>
                 </el-form-item>
                 <el-form-item
+                    label="是否显示在首页"
+                    label-width="160px"
+                    prop="showHome"
+                    v-if="userType == 1"
+                >
+                    <el-radio v-model="showHome" :label="0">否</el-radio>
+                    <el-radio v-model="showHome" :label="1">是</el-radio>
+                </el-form-item>
+                <el-form-item
+                    label="是否推荐"
+                    label-width="160px"
+                    prop="recommend"
+                    v-if="userType == 1"
+                >
+                    <el-radio v-model="recommend" :label="0">否</el-radio>
+                    <el-radio v-model="recommend" :label="1">是</el-radio>
+                </el-form-item>
+                <el-form-item
                     label="热度"
                     label-width="160px"
                     prop="hotNum"
-                    v-if="userType === 1"
+                    v-if="userType == 1"
                 >
                     <el-input
                         v-model.number="hotNum"
                         style="width: 200px; margin-right: 10px"
                     ></el-input>
                 </el-form-item>
+
                 <el-form-item
                     label="主播描述"
                     label-width="160px"
                     prop="desc"
-                    v-if="userType === 1"
+                    v-if="userType == 1"
                 >
                     <el-input
                         v-model="desc"
@@ -290,7 +295,9 @@ export default {
         };
         return {
             userName: '',
+            recommend: '',
             roomNum: '',
+            showHome: '',
             goldNumber: 0,
             tableData: [],
             fileList: [],
@@ -449,6 +456,8 @@ export default {
                 nickName: this.nickName,
                 hotNum: this.hotNum,
                 desc: this.desc,
+                recommend: this.recommend,
+                showHome: this.showHome,
             };
             this.$axios('post', '/backUser/editUserInfo', param).then((res) => {
                 if (res.code === 200) {
