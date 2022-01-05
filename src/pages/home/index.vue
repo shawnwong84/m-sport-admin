@@ -253,6 +253,17 @@
                         style="width: 200px; margin-right: 10px"
                     ></el-input>
                 </el-form-item>
+                <el-form-item
+                    label="初始热度"
+                    label-width="160px"
+                    prop="roomHotInitial"
+                    v-if="userType == 1"
+                >
+                    <el-input
+                        v-model.number="roomHotInitial"
+                        style="width: 200px; margin-right: 10px"
+                    ></el-input>
+                </el-form-item>
 
                 <el-form-item
                     label="主播描述"
@@ -298,6 +309,7 @@ export default {
             recommend: '',
             roomNum: '',
             showHome: '',
+            roomHotInitial: 0,
             goldNumber: 0,
             tableData: [],
             fileList: [],
@@ -458,6 +470,7 @@ export default {
                 desc: this.desc,
                 recommend: this.recommend,
                 showHome: this.showHome,
+                roomHotInitial: this.roomHotInitial,
             };
             this.$axios('post', '/backUser/editUserInfo', param).then((res) => {
                 if (res.code === 200) {
